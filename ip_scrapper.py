@@ -341,6 +341,6 @@ def get_whois_info():
 
 
 set_console_title()
-#start_printings()
+start_printings()
 main_menu2()
 main_scene()
