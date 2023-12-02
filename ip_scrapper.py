@@ -8,7 +8,8 @@ import whois
 from colorama import Fore, Style
 from pywebcopy import save_webpage, save_website
 import validators
-import pyshark
+from bs4 import *
+
 
 os.system('mode con: cols=100 lines=40')
 
@@ -126,6 +127,48 @@ def start_printings():
     print(Style.RESET_ALL)
 
 
+def website_analytics(self):
+    url = f'https://www.similarweb.com/website/{self}/#overview'
+
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'html.parser')
+
+    total_info = soup.find_all('p', class_='engagement-list__item-value')
+    for i in total_info:
+        print(i.text)
+
+
+
+
+def nickname_finder(self):
+    os.system('cls')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '/' + Fore.MAGENTA + ']' + Fore.BLUE + 'Searching nickname', Fore.MAGENTA + f'{self}' + Fore.BLUE + ' on:')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Archive.org:', Fore.MAGENTA + f'https://archive.org/details/@{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'AskFM:', Fore.MAGENTA + f'https://ask.fm/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Audiojungle:', Fore.MAGENTA + f'https://audiojungle.net/user/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'BitBucket:', Fore.MAGENTA + f'https://bitbucket.org/{self}/')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Blogger:', Fore.MAGENTA + f'https://{self}.blogspot.com')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Codecademy:', Fore.MAGENTA + f'https://www.codecademy.com/profiles/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'DEV Community:', Fore.MAGENTA + f'https://dev.to/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'DeviantART:', Fore.MAGENTA + f'https://{self}.deviantart.com')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Disqus:', Fore.MAGENTA + f'https://disqus.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Docker Hub:', Fore.MAGENTA + f'https://hub.docker.com/u/{self}/')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Ello:', Fore.MAGENTA + f'https://ello.co/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Euw:', Fore.MAGENTA + f'https://euw.op.gg/summoner/userName={self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'F3.cool:', Fore.MAGENTA + f'https://f3.cool/{self}/')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Facebook:', Fore.MAGENTA + f'https://www.facebook.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Facenama:', Fore.MAGENTA + f'https://facenama.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Flipboard:', Fore.MAGENTA + f'https://flipboard.com/@{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'FortniteTracker:', Fore.MAGENTA + f'https://fortnitetracker.com/profile/all/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Freelancer:', Fore.MAGENTA + f'https://ww.freelancer.com/u/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Giphy:', Fore.MAGENTA + f'https://giphy.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'GitHub:', Fore.MAGENTA + f'https://www.github.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Gitee:', Fore.MAGENTA + f'https://gitee.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Youtube:', Fore.MAGENTA + f'https://www.youtube.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Vkontakte:', Fore.MAGENTA + f'https://vk.com/{self}')
+    print(Fore.MAGENTA + f'['+ Fore.BLUE + '+' + Fore.MAGENTA + ']' + Fore.BLUE + 'Instagram:', Fore.MAGENTA + f'https://www.instagram.com/{self}/')
+
+
 def get_ip_location():
     ip_address = input('Input ip-adress > ')
     url = f'https://api.ip2location.io/?key={API}&ip={ip_address}'
@@ -154,13 +197,13 @@ def main_menu2():
 ██║     ██╔══╝  ██║     ██╔══╝         |       [4] (bonus) download website / page
 ╚██████╗███████╗███████╗███████╗       |       [5] whois function
  ╚═════╝╚══════╝╚══════╝╚══════╝       |
-                                       |       author: 
-███████╗████████╗██╗ █████╗ ██╗        |
-██╔════╝╚══██╔══╝██║██╔══██╗██║        |
-███████╗   ██║   ██║███████║██║        |
+                                       |       author: https://github.com/gohan-to-mizu
+███████╗████████╗██╗ █████╗ ██╗        |       
+██╔════╝╚══██╔══╝██║██╔══██╗██║        |       [6] nickname byfinder
+███████╗   ██║   ██║███████║██║        |       [7] website analytics
 ╚════██║   ██║   ██║██╔══██║██║        |
-███████║   ██║   ██║██║  ██║███████╗   |       []exit
-╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝   |       [999] programm info
+███████║   ██║   ██║██║  ██║███████╗   |       [8] programm info
+╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝   |       [9] exit
 """))
 
 
@@ -180,7 +223,7 @@ def main_scene():
     while True:
 
         print()
-        choose_def = input(Fore.RED + 'choose function > ')
+        choose_def = input(Fore.CYAN + '[+]Choose function > ')
         if choose_def == '1':
             print()
             os.system('cls')
@@ -189,7 +232,7 @@ def main_scene():
             if ip_info:
                 for key, value in ip_info.items():
                     if key != 'readme':
-                        print(Fore.RED + f'{key}: {value}')
+                        print(Fore.CYAN + f'{key}: {value}')
             main_menu2()
 
 
@@ -199,7 +242,7 @@ def main_scene():
             ip_data = get_ip_location()
             if ip_data:
                 for key, value in ip_data.items():
-                    print(Fore.RED + f'{key}: {value}')
+                    print(Fore.CYAN + f'{key}: {value}')
             main_menu2()
 
 
@@ -226,23 +269,33 @@ def main_scene():
             main_menu2()
 
         elif choose_def == '6':
-            os.system('cls')
-            print(Style.RESET_ALL)
-            sys.exit()
-            #62.122.214.144
+            nickname = input('Input nickname for search: ')
+            nickname_finder(nickname)
+            main_menu2()
 
 
-        elif choose_def == '999':
+        elif choose_def == '7':
+            website = input('Inpur website name (google.com): ')
+            website_analytics(website)
+            main_menu2()
+
+
+        elif choose_def == '8':
             os.system('cls')
             print(
                 '\n I did this programm for 2 days, i think that is quite a lot, \nmodules which i have used: '
                 '\nctypes, os, sys\ntime, fade, requests\nwhois, colorama, pywebcopy\n and validators')
             main_menu2()
 
+        elif choose_def == '9':
+            os.system('cls')
+            print(Style.RESET_ALL)
+            sys.exit()
+
 
         else:
             os.system('cls')
-            print(Fore.RED + "here isn't another functions (...")
+            print(Fore.CYAN + "here isn't another functions (...")
             print()
             main_menu2()
 
