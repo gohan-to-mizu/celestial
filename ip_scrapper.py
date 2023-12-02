@@ -146,28 +146,23 @@ def ping_ip():
     process = os.system(f'ping {ip_address}')
     print(process)
 
+def main_menu2():
+    print(fade.water("""
+ ██████╗███████╗██╗     ███████╗       |       [1] get my ip info
+██╔════╝██╔════╝██║     ██╔════╝       |       [2] get another ip info
+██║     █████╗  ██║     █████╗         |       [3] ping ip
+██║     ██╔══╝  ██║     ██╔══╝         |       [4] (bonus) download website / page
+╚██████╗███████╗███████╗███████╗       |       [5] whois function
+ ╚═════╝╚══════╝╚══════╝╚══════╝       |
+                                       |       author: 
+███████╗████████╗██╗ █████╗ ██╗        |
+██╔════╝╚══██╔══╝██║██╔══██╗██║        |
+███████╗   ██║   ██║███████║██║        |
+╚════██║   ██║   ██║██╔══██║██║        |
+███████║   ██║   ██║██║  ██║███████╗   |       []exit
+╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═╝╚══════╝   |       [999] programm info
+"""))
 
-def main_menu():
-    print(fade.fire('''
-                                                                                    
-
- ,-----.       ,--.               ,--.  ,--.        ,--.    ,--.        
-
-'  .--./ ,---. |  | ,---.  ,---.,-'  '-.`--' ,--,--.|  |    |  | ,---.  
-
-|  |    | .-. :|  || .-. :(  .-''-.  .-',--.' ,-.  ||  |    |  || .-. | 
-
-'  '--'\\   --.|  |\   --..-'  `) |  |  |  |\ '-'  ||  |    |  || '-' ' 
-
- `-----' `----'`--' `----'`----'  `--'  `--' `--`--'`--'    `--'|  |-'  
-
-                                                                `--'    
-    
-                          [1] get my ip | [2] get ip info | [3] ping ip
-                          [4] (bonus) download website    | [5] whois      
-
-                                          [6] EXIT        | [999] info
-    '''))
 
 
 def get_my_ip_info():
@@ -195,7 +190,7 @@ def main_scene():
                 for key, value in ip_info.items():
                     if key != 'readme':
                         print(Fore.RED + f'{key}: {value}')
-            main_menu()
+            main_menu2()
 
 
         elif choose_def == '2':
@@ -205,7 +200,7 @@ def main_scene():
             if ip_data:
                 for key, value in ip_data.items():
                     print(Fore.RED + f'{key}: {value}')
-            main_menu()
+            main_menu2()
 
 
         elif choose_def == '3':
@@ -213,7 +208,7 @@ def main_scene():
             os.system('cls')
             ping_ip()
             print()
-            main_menu()
+            main_menu2()
 
         elif choose_def == '4':
             print()
@@ -221,14 +216,14 @@ def main_scene():
             os.system('cls')
             print('Succesful!')
             print()
-            main_menu()
+            main_menu2()
 
         elif choose_def == '5':
             print()
             os.system('cls')
             get_whois_info()
             print()
-            main_menu()
+            main_menu2()
 
         elif choose_def == '6':
             os.system('cls')
@@ -242,14 +237,14 @@ def main_scene():
             print(
                 '\n I did this programm for 2 days, i think that is quite a lot, \nmodules which i have used: '
                 '\nctypes, os, sys\ntime, fade, requests\nwhois, colorama, pywebcopy\n and validators')
-            main_menu()
+            main_menu2()
 
 
         else:
             os.system('cls')
             print(Fore.RED + "here isn't another functions (...")
             print()
-            main_menu()
+            main_menu2()
 
 
 def get_whois_info():
@@ -293,6 +288,6 @@ def get_whois_info():
 
 
 set_console_title()
-start_printings()
-main_menu()
+#start_printings()
+main_menu2()
 main_scene()
